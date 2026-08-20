@@ -1,26 +1,152 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --color-obsidian: #111216;
+  --color-graphite: #1B1C22;
+  --color-tungsten: #23252C;
+  --color-carbon: #2E3036;
+  --color-eink: #F5F5F7;
+  --color-steel: #8A8F98;
+
+  --color-aqi-good: #10B981;
+  --color-aqi-moderate: #EAB308;
+  --color-aqi-poor: #F97316;
+  --color-aqi-unhealthy: #EF4444;
+  --color-aqi-severe: #A855F7;
+  --color-aqi-hazardous: #8B5CF6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ──────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-obsidian);
+  color: var(--color-eink);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* ─── Typography Utility ────────────────────────────────── */
+.font-numeric {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Data Tables ───────────────────────────────────────── */
+.data-table th {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-steel);
+  border-bottom: 1px solid var(--color-carbon);
+  padding: 0.75rem 1rem;
+}
+
+.data-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-carbon);
+}
+
+.data-table tbody tr:hover {
+  background-color: var(--color-graphite);
+}
+
+/* ─── Telemetry Instrument Styles ───────────────────────── */
+.telemetry-glow {
+  text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+}
+
+.pulse-line {
+  position: relative;
+  height: 2px;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+.pulse-line::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+.pulse-line.positive::after { right: 0; }
+.pulse-line.negative::after { left: 0; }
+
+/* ─── Layout & Utilities ────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-carbon);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-steel);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mask-edges {
+  mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-graphite) 0%,
+    var(--color-tungsten) 50%,
+    var(--color-graphite) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.btn-press:active {
+  transform: scale(0.97);
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Motion ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .snap-reveal {
+    animation: snap-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes snap-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
