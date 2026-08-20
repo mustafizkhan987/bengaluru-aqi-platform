@@ -106,7 +106,7 @@ export default function AboutPage() {
         <section className="bg-[#f5f5f7] dark:bg-[#1c1c1e] p-8 md:p-10 rounded-3xl transition-colors duration-300">
           <div className="flex items-center gap-4 mb-6">
             <div className="p-3 bg-[#e5e5ea] dark:bg-white/10 text-[#86868b] dark:text-white rounded-2xl">
-              <Users className="h-6 w-6" />
+              <FileSearch className="h-6 w-6" />
             </div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">Project Info</h2>
           </div>
@@ -114,6 +114,33 @@ export default function AboutPage() {
             <p className="mb-2"><strong>Dataset:</strong> Central Pollution Control Board (CPCB) India historical records (2020-2023).</p>
             <p className="mb-2"><strong>Domain:</strong> Environmental Data Science & Machine Learning.</p>
             <p><strong>Status:</strong> Prototype / Demo Version.</p>
+          </div>
+        </section>
+
+        <section className="bg-[#f5f5f7] dark:bg-[#1c1c1e] p-8 md:p-10 rounded-3xl transition-colors duration-300">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-3 bg-[#e5e5ea] dark:bg-white/10 text-[#86868b] dark:text-white rounded-2xl">
+              <Users className="h-6 w-6" />
+            </div>
+            <h2 className="text-2xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">Team</h2>
+          </div>
+          <div className="text-[#86868b] dark:text-[#98989d] text-sm leading-relaxed grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="bg-white/50 dark:bg-black/20 p-4 rounded-xl">
+              <p className="font-bold text-[#1d1d1f] dark:text-white text-base">Mohammed Mustafiz Khan</p>
+              <p className="mt-1">Frontend</p>
+            </div>
+            <div className="bg-white/50 dark:bg-black/20 p-4 rounded-xl">
+              <p className="font-bold text-[#1d1d1f] dark:text-white text-base">Nayan Utkarsh</p>
+              <p className="mt-1">Backend</p>
+            </div>
+            <div className="bg-white/50 dark:bg-black/20 p-4 rounded-xl">
+              <p className="font-bold text-[#1d1d1f] dark:text-white text-base">Kunal Reddy</p>
+              <p className="mt-1">Research</p>
+            </div>
+            <div className="bg-white/50 dark:bg-black/20 p-4 rounded-xl">
+              <p className="font-bold text-[#1d1d1f] dark:text-white text-base">Ganesh Kumar</p>
+              <p className="mt-1">Model Training</p>
+            </div>
           </div>
         </section>
 
