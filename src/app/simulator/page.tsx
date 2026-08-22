@@ -4,7 +4,7 @@ import { simulateIntervention, predictAQI } from '@/lib/api';
 import { PredictionInput, SimulationResult } from '@/lib/types';
 import { SliderControl } from '@/components/SliderControl';
 import { AQIBadge } from '@/components/AQIBadge';
-import { AlertTriangle, ArrowRight, Settings2 } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Settings2, Activity } from 'lucide-react';
 import { getAQIColor } from '@/lib/aqi';
 
 export default function SimulatorPage() {
@@ -75,6 +75,23 @@ export default function SimulatorPage() {
         <p className="text-lg text-steel mt-3 max-w-2xl mx-auto">
           Manipulate emission variables in real-time to model targeted reduction policies and their impact on the AQI baseline.
         </p>
+      </div>
+
+      <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 p-4 rounded-r-lg max-w-4xl mx-auto">
+        <div className="flex gap-3">
+          <div className="flex-shrink-0 mt-0.5">
+            <Activity className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+          </div>
+          <div className="text-sm">
+            <p className="font-medium text-amber-900 dark:text-amber-300 mb-1">
+              Demo Simulation Notice
+            </p>
+            <p className="text-amber-800 dark:text-amber-400 leading-relaxed">
+              Intervention simulations use mock data for demonstration. Production version will use validated atmospheric models 
+              and real policy impact coefficients from the research team.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="bg-obsidian border border-amber-500/30 p-4 rounded text-amber-500/80 font-mono text-xs flex gap-3 max-w-4xl mx-auto">

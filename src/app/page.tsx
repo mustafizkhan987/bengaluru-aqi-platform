@@ -89,6 +89,25 @@ export default function Dashboard() {
         </div>
       </RevealSection>
 
+      <RevealSection delay={50}>
+        <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 p-4 rounded-r-lg">
+          <div className="flex gap-3">
+            <div className="flex-shrink-0 mt-0.5">
+              <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+            </div>
+            <div className="text-sm">
+              <p className="font-medium text-amber-900 dark:text-amber-300 mb-1">
+                Demo Data Notice
+              </p>
+              <p className="text-amber-800 dark:text-amber-400 leading-relaxed">
+                Data shown is generated from a mock data layer (src/lib/api.ts) for demonstration purposes. 
+                In production, this dashboard will connect to real-time CPCB monitoring stations and live ML predictions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </RevealSection>
+
       <RevealSection delay={100}>
         {/* Hero Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

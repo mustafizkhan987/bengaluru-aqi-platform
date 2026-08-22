@@ -1,8 +1,9 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { X, LogIn, Bell, RefreshCw, Info, ChevronRight, Settings2 } from 'lucide-react';
+import { X, LogIn, Bell, RefreshCw, Info, ChevronRight, Settings2, Sun, Moon, Monitor } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface SettingsPanelProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface SettingsPanelProps {
 
 export function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
   const router = useRouter();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [notifications, setNotifications] = useState(true);
   const [autoRefresh, setAutoRefresh] = useState(false);
@@ -77,6 +79,37 @@ export function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
               </div>
               <ChevronRight className="h-4 w-4 text-steel" />
             </button>
+          </section>
+
+          <section>
+            <h3 className="text-xs font-mono text-steel uppercase tracking-widest mb-3 border-b border-carbon pb-2">
+              Appearance
+            </h3>
+            <div className="bg-graphite dark:bg-graphite border border-carbon rounded p-4">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm font-mono font-medium text-eink dark:text-eink">THEME MODE</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <ThemeButton
+                  active={theme === 'light'}
+                  onClick={() => setTheme('light')}
+                  icon={<Sun className="h-4 w-4" />}
+                  label="Light"
+                />
+                <ThemeButton
+                  active={theme === 'dark'}
+                  onClick={() => setTheme('dark')}
+                  icon={<Moon className="h-4 w-4" />}
+                  label="Dark"
+                />
+                <ThemeButton
+                  active={theme === 'system'}
+                  onClick={() => setTheme('system')}
+                  icon={<Monitor className="h-4 w-4" />}
+                  label="System"
+                />
+              </div>
+            </div>
           </section>
 
           <section>
@@ -163,5 +196,35 @@ function Toggle({
         />
       </button>
     </div>
+  );
+}
+
+function ThemeButton({
+  active,
+  onClick,
+  icon,
+  label,
+}: {
+  active: boolean;
+  onClick: () => void;
+  icon: React.ReactNode;
+  label: string;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        'flex flex-col items-center gap-2 p-3 rounded-lg transition-all duration-200 btn-press',
+        active
+          ? 'bg-emerald-500/20 border-2 border-emerald-500 text-emerald-400'
+          : 'bg-obsidian dark:bg-obsidian border-2 border-carbon text-steel hover:border-steel hover:text-eink'
+      )}
+      aria-pressed={active}
+    >
+      <div className={cn('transition-colors', active && 'text-emerald-400')}>
+        {icon}
+      </div>
+      <span className="text-xs font-mono font-medium">{label}</span>
+    </button>
   );
 }

@@ -13,7 +13,7 @@ export function AQIBadge({ value, className }: AQIBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center px-3 py-1 rounded-full text-xs font-numeric font-medium whitespace-nowrap border bg-obsidian",
+        "inline-flex items-center px-3 py-1 rounded-full text-xs font-numeric font-medium whitespace-nowrap border bg-obsidian dark:bg-obsidian light:bg-white",
         className
       )}
       style={{ 

@@ -37,22 +37,22 @@ export default function RecommendationsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 space-y-12">
       <div className="text-center">
-        <h1 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">Recommendations & Interventions</h1>
-        <p className="text-lg text-[#86868b] dark:text-[#98989d] mt-2 max-w-2xl mx-auto">
+        <h1 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] dark:text-white light:text-[#1d1d1f] tracking-tight">Recommendations & Interventions</h1>
+        <p className="text-lg text-[#86868b] dark:text-[#98989d] light:text-[#6e6e73] mt-2 max-w-2xl mx-auto">
           Targeted mitigation strategies grouped by dominant pollutant. 
         </p>
       </div>
 
-      <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
+      <div className="bg-amber-50 dark:bg-amber-950/20 light:bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
         <div className="flex">
           <div className="flex-shrink-0">
             <AlertTriangle className="h-5 w-5 text-amber-500" />
           </div>
           <div className="ml-3">
-            <p className="text-sm text-amber-800 font-medium">
+            <p className="text-sm text-amber-800 dark:text-amber-300 light:text-amber-800 font-medium">
               Disclaimer: Potential Mitigation Strategies
             </p>
-            <p className="text-sm text-amber-700 mt-1">
+            <p className="text-sm text-amber-700 dark:text-amber-400 light:text-amber-700 mt-1">
               These are general potential mitigation strategies commonly recommended for urban air quality management. 
               The inclusion of these strategies does not imply that the predictive model has definitively proven a specific policy outcome.
               All major interventions require dedicated feasibility studies.
@@ -63,19 +63,19 @@ export default function RecommendationsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {recommendations.map((rec) => (
-          <div key={rec.pollutant} className="bg-[#f5f5f7] dark:bg-[#1c1c1e] rounded-3xl overflow-hidden flex flex-col transition-colors duration-300">
-            <div className="p-8 border-b border-[#e5e5ea] dark:border-white/10 bg-[#e5e5ea]/50 dark:bg-white/5 flex items-center gap-4">
-              <div className="p-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm">
+          <div key={rec.pollutant} className="bg-[#f5f5f7] dark:bg-[#1c1c1e] light:bg-[#f5f5f7] rounded-3xl overflow-hidden flex flex-col transition-colors duration-300">
+            <div className="p-8 border-b border-[#e5e5ea] dark:border-white/10 light:border-[#e5e5ea] bg-[#e5e5ea]/50 dark:bg-white/5 light:bg-[#e5e5ea]/50 flex items-center gap-4">
+              <div className="p-3 bg-white dark:bg-white/10 light:bg-white rounded-2xl shadow-sm">
                 {rec.icon}
               </div>
-              <h2 className="text-xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">{rec.pollutant}</h2>
+              <h2 className="text-xl font-bold text-[#1d1d1f] dark:text-white light:text-[#1d1d1f] tracking-tight">{rec.pollutant}</h2>
             </div>
             <div className="p-8 flex-grow">
               <ul className="space-y-5">
                 {rec.strategies.map((strategy, idx) => (
                   <li key={idx} className="flex gap-4">
-                    <Lightbulb className="h-5 w-5 text-blue-500 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-[#86868b] dark:text-[#98989d] text-sm leading-relaxed">{strategy}</span>
+                    <Lightbulb className="h-5 w-5 text-blue-500 dark:text-blue-400 light:text-blue-500 flex-shrink-0 mt-0.5" />
+                    <span className="text-[#86868b] dark:text-[#98989d] light:text-[#6e6e73] text-sm leading-relaxed">{strategy}</span>
                   </li>
                 ))}
               </ul>

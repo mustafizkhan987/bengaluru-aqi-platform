@@ -11,6 +11,7 @@ const ROUTE_ORDER = [
   '/simulator',
   '/model-performance',
   '/recommendations',
+  '/govt-action',
   '/about',
 ];
 
@@ -22,6 +23,7 @@ const ROUTE_NAMES: Record<string, string> = {
   '/simulator': 'Simulator',
   '/model-performance': 'Model Performance',
   '/recommendations': 'Recommendations',
+  '/govt-action': 'Government Action',
   '/about': 'About',
 };
 
@@ -125,14 +127,14 @@ export default function Template({ children }: { children: React.ReactNode }) {
               nextVisible ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-2'
             }`}
           >
-            <span className="text-xs font-semibold text-[#86868b] dark:text-[#98989d] uppercase tracking-[0.2em]">
+            <span className="text-xs font-semibold text-[#86868b] dark:text-[#98989d] light:text-[#6e6e73] uppercase tracking-[0.2em]">
               Continue to
             </span>
-            <span className="text-2xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">
+            <span className="text-2xl font-bold text-[#1d1d1f] dark:text-white light:text-[#1d1d1f] tracking-tight">
               {nextName}
             </span>
-            <div className={`transition-all duration-300 ${nextVisible ? 'animate-bounce' : ''}`}>
-              <ChevronDown className="h-7 w-7 text-[#86868b] dark:text-[#98989d]" />
+            <div className={`transition-all duration-300 text-[#86868b] dark:text-[#98989d] light:text-[#6e6e73] ${nextVisible ? 'animate-bounce' : ''}`}>
+              <ChevronDown className="h-7 w-7" />
             </div>
           </div>
 

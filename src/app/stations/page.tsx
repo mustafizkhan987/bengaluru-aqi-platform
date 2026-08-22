@@ -30,6 +30,23 @@ export default async function StationExplorer() {
         </p>
       </div>
 
+      <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 p-4 rounded-r-lg max-w-4xl mx-auto">
+        <div className="flex gap-3">
+          <div className="flex-shrink-0 mt-0.5">
+            <Activity className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+          </div>
+          <div className="text-sm">
+            <p className="font-medium text-amber-900 dark:text-amber-300 mb-1">
+              Demo Data Notice
+            </p>
+            <p className="text-amber-800 dark:text-amber-400 leading-relaxed">
+              Station data shown below is generated from a mock data layer for demonstration purposes. In production, 
+              this will connect to real-time CPCB monitoring stations via the backend API.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         {stationsData.map((station, idx) => (
           <RevealSection key={station.id} delay={idx * 80}>

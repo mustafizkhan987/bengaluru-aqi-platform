@@ -1,5 +1,5 @@
 import { getModelMetrics } from '@/lib/api';
-import { CheckCircle2, Info } from 'lucide-react';
+import { CheckCircle2, Info, Activity } from 'lucide-react';
 import { PerformanceChart } from '@/components/PerformanceChart';
 
 export default async function ModelPerformancePage() {
@@ -12,6 +12,23 @@ export default async function ModelPerformancePage() {
         <p className="text-lg text-steel mt-3 max-w-2xl mx-auto">
           Review the evaluation metrics of the machine learning models tested for this project.
         </p>
+      </div>
+
+      <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 p-4 rounded-r-lg max-w-4xl mx-auto">
+        <div className="flex gap-3">
+          <div className="flex-shrink-0 mt-0.5">
+            <Activity className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+          </div>
+          <div className="text-sm">
+            <p className="font-medium text-amber-900 dark:text-amber-300 mb-1">
+              Demo Metrics Notice
+            </p>
+            <p className="text-amber-800 dark:text-amber-400 leading-relaxed">
+              Metrics shown are simulated for demonstration. Actual model performance metrics from trained XGBoost, Random Forest, 
+              and Linear Regression models will be provided by the ML team.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="bg-obsidian border border-carbon text-steel p-4 rounded font-mono text-xs flex gap-3 max-w-3xl mx-auto">

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -45,14 +46,34 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       className={`${geist.variable} ${jetbrainsMono.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen flex flex-col bg-obsidian text-steel font-sans selection:bg-emerald-500/30">
-        <div className="relative z-10 flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow pb-20 sm:pb-0">
-            {children}
-          </main>
-        </div>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const stored = localStorage.getItem('theme');
+                const theme = stored || 'system';
+                let resolved = theme;
+                if (theme === 'system') {
+                  resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                document.documentElement.classList.add(resolved);
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col bg-obsidian dark:bg-obsidian light:bg-white text-steel dark:text-steel light:text-[#6e6e73] font-sans selection:bg-emerald-500/30">
+        <ThemeProvider>
+          <div className="relative z-10 flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow pb-20 sm:pb-0">
+              {children}
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -42,6 +42,23 @@ export default function PredictPage() {
         </p>
       </div>
 
+      <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 p-4 rounded-r-lg max-w-4xl mx-auto">
+        <div className="flex gap-3">
+          <div className="flex-shrink-0 mt-0.5">
+            <Activity className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+          </div>
+          <div className="text-sm">
+            <p className="font-medium text-amber-900 dark:text-amber-300 mb-1">
+              Demo Model Notice
+            </p>
+            <p className="text-amber-800 dark:text-amber-400 leading-relaxed">
+              Predictions shown are generated from a mock ML model for demonstration purposes. Production deployment will use 
+              trained XGBoost models with real-time SHAP explanations from the backend service.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           <div className="bg-graphite border border-carbon p-6 md:p-10 rounded-2xl transition-colors duration-300">

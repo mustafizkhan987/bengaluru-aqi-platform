@@ -13,7 +13,7 @@ interface TimeSeriesChartProps {
 
 export function TimeSeriesChart({ data, xKey, yKeys, loading, formatXAsDate }: TimeSeriesChartProps) {
   if (loading) return <Skeleton className="w-full h-[300px]" />;
-  if (!data || data.length === 0) return <div className="w-full h-[300px] flex items-center justify-center text-slate-500 bg-slate-50 rounded-lg border border-slate-100">No data available</div>;
+  if (!data || data.length === 0) return <div className="w-full h-[300px] flex items-center justify-center text-[#86868b] dark:text-[#98989d] light:text-[#6e6e73] bg-[#f5f5f7] dark:bg-[#1c1c1e] light:bg-[#f5f5f7] rounded-lg border border-[#e5e5ea] dark:border-white/10 light:border-[#e5e5ea]">No data available</div>;
 
   const tickFormatter = (value: unknown): string => {
     if (formatXAsDate && typeof value === 'string') {

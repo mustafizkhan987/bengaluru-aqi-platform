@@ -4,7 +4,7 @@ import { getStations, getHistorical } from '@/lib/api';
 import { Station, Reading } from '@/lib/types';
 import { TimeSeriesChart } from '@/components/TimeSeriesChart';
 import { BarComparisonChart } from '@/components/BarComparisonChart';
-import { Filter } from 'lucide-react';
+import { Filter, Activity } from 'lucide-react';
 import { format } from 'date-fns';
 
 export default function HistoricalAnalysis() {
@@ -55,6 +55,23 @@ export default function HistoricalAnalysis() {
         <p className="text-lg text-[#86868b] dark:text-[#98989d] mt-2 max-w-2xl mx-auto">
           Explore historical trends, compare stations, and analyze seasonal variations in air quality metrics.
         </p>
+      </div>
+
+      <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 p-4 rounded-r-lg max-w-4xl mx-auto">
+        <div className="flex gap-3">
+          <div className="flex-shrink-0 mt-0.5">
+            <Activity className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+          </div>
+          <div className="text-sm">
+            <p className="font-medium text-amber-900 dark:text-amber-300 mb-1">
+              Demo Data Notice
+            </p>
+            <p className="text-amber-800 dark:text-amber-400 leading-relaxed">
+              Historical data displayed is generated for demonstration purposes. Production version will display actual CPCB 
+              historical records (2020-present) retrieved from the backend.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Filters */}
