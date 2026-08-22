@@ -2,12 +2,13 @@
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { ModelMetrics } from '@/lib/types';
+import { memo } from 'react';
 
 interface PerformanceChartProps {
   metrics: ModelMetrics[];
 }
 
-export function PerformanceChart({ metrics }: PerformanceChartProps) {
+export const PerformanceChart = memo(function PerformanceChart({ metrics }: PerformanceChartProps) {
   return (
     <div className="h-[300px] w-full">
       <ResponsiveContainer width="100%" height="100%">
@@ -27,4 +28,4 @@ export function PerformanceChart({ metrics }: PerformanceChartProps) {
       </ResponsiveContainer>
     </div>
   );
-}
+});

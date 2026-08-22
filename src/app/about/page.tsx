@@ -1,6 +1,19 @@
-import { BookOpen, Target, FileSearch, Database, Cpu, Users } from 'lucide-react';
+import { BookOpen, Target, FileSearch, Database, Cpu, Users, MapPin } from 'lucide-react';
+import { getStations, getHistorical } from '@/lib/api';
+import { AQIMapWrapper } from '@/components/AQIMapWrapper';
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const stations = await getStations();
+  const stationsData = await Promise.all(
+    stations.map(async (station) => {
+      const historical = await getHistorical(station.id);
+      return {
+        station,
+        latestReading: historical[0] || null,
+      };
+    })
+  );
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 space-y-12">
       <div className="text-center space-y-4">
@@ -141,6 +154,24 @@ export default function AboutPage() {
               <p className="font-bold text-[#1d1d1f] dark:text-white text-base">Ganesh Kumar</p>
               <p className="mt-1">Model Training</p>
             </div>
+          </div>
+        </section>
+        <section className="bg-[#f5f5f7] dark:bg-[#1c1c1e] p-8 md:p-10 rounded-3xl transition-colors duration-300">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-3 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-2xl">
+              <MapPin className="h-6 w-6" />
+            </div>
+            <h2 className="text-2xl font-bold text-[#1d1d1f] dark:text-white tracking-tight">Bengaluru AQI Live Network</h2>
+          </div>
+          <div className="prose prose-slate max-w-none text-[#86868b] dark:text-[#98989d] space-y-4 dark:prose-invert mb-8">
+            <p>
+              An interactive overview of our live monitoring network across Bengaluru. 
+              The map below displays real-time readings sourced directly from the backend server.
+            </p>
+          </div>
+          
+          <div className="h-[450px] w-full relative z-0">
+            <AQIMapWrapper stationsData={stationsData} />
           </div>
         </section>
 

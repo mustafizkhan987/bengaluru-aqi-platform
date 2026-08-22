@@ -1,4 +1,4 @@
-import { AlertTriangle, Lightbulb, Wind, Factory, Car } from 'lucide-react';
+import { Lightbulb, Wind, Factory, Car } from 'lucide-react';
 
 export default function RecommendationsPage() {
   const recommendations = [
@@ -41,24 +41,6 @@ export default function RecommendationsPage() {
         <p className="text-lg text-[#86868b] dark:text-[#98989d] light:text-[#6e6e73] mt-2 max-w-2xl mx-auto">
           Targeted mitigation strategies grouped by dominant pollutant. 
         </p>
-      </div>
-
-      <div className="bg-amber-50 dark:bg-amber-950/20 light:bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
-        <div className="flex">
-          <div className="flex-shrink-0">
-            <AlertTriangle className="h-5 w-5 text-amber-500" />
-          </div>
-          <div className="ml-3">
-            <p className="text-sm text-amber-800 dark:text-amber-300 light:text-amber-800 font-medium">
-              Disclaimer: Potential Mitigation Strategies
-            </p>
-            <p className="text-sm text-amber-700 dark:text-amber-400 light:text-amber-700 mt-1">
-              These are general potential mitigation strategies commonly recommended for urban air quality management. 
-              The inclusion of these strategies does not imply that the predictive model has definitively proven a specific policy outcome.
-              All major interventions require dedicated feasibility studies.
-            </p>
-          </div>
-        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

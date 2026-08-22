@@ -1,6 +1,7 @@
 'use client';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Skeleton } from './Skeleton';
+import { memo } from 'react';
 
 interface BarComparisonChartProps {
   data: Record<string, unknown>[];
@@ -9,7 +10,7 @@ interface BarComparisonChartProps {
   loading?: boolean;
 }
 
-export function BarComparisonChart({ data, xKey, yKeys, loading }: BarComparisonChartProps) {
+export const BarComparisonChart = memo(function BarComparisonChart({ data, xKey, yKeys, loading }: BarComparisonChartProps) {
   if (loading) return <Skeleton className="w-full h-[300px]" />;
   if (!data || data.length === 0) return <div className="w-full h-[300px] flex items-center justify-center text-[#86868b] dark:text-[#98989d] light:text-[#6e6e73] bg-[#f5f5f7] dark:bg-[#1c1c1e] light:bg-[#f5f5f7] rounded-lg border border-[#e5e5ea] dark:border-white/10 light:border-[#e5e5ea]">No data available</div>;
 
@@ -32,4 +33,4 @@ export function BarComparisonChart({ data, xKey, yKeys, loading }: BarComparison
       </ResponsiveContainer>
     </div>
   );
-}
+});
